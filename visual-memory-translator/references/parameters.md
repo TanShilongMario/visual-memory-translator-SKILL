@@ -17,6 +17,7 @@ original_display_mode:
   # ticket_image
   # vellum_overlay
   # peek_window
+  # extracted_sticker_layers
 
 layout_mode:
   # split_editorial
@@ -25,6 +26,7 @@ layout_mode:
   # editorial_cards
   # single_artwork
   # asymmetric_archive
+  # sticker_layer_reassembly
 
 style_mode:
   # minimal_watercolor
@@ -42,6 +44,8 @@ style_mode:
   # specimen_sheet
   # map_note
   # commemorative_cover
+  # layered_sticker_reassembly
+  # rounded_monoline_blocks
 
 abstraction_level:
   # low | medium | high | extreme
@@ -51,6 +55,24 @@ whitespace_level:
 
 translation_scale:
   # small | one_ninth_grid | medium
+
+layer_count:
+  # 2 | 3
+
+sticker_border:
+  # clean_warm_white | clean_cool_white
+
+sticker_border_width:
+  # subtle_2_percent | standard_3_to_5_percent
+
+sticker_shadow:
+  # none | very_subtle
+
+line_weight:
+  # bold_uniform_rounded
+
+color_block_count:
+  # 1 | 2 | 3 | 4   # default <= 3; hard max = 4
 
 text_mode:
   # none | user_text | auto_poetic | auto_reflective

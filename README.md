@@ -1,119 +1,215 @@
 # Visual Memory Translator / 影像转译编辑器
 
-把照片转译成具有**当代编辑设计、艺术出版、视觉手札**气质的二次创作图像。
+[中文](#中文) · [English](#english)
 
 > **原图是现实记录，新图是记忆转译。**  
-> 不是滤镜，不是风格迁移，不是把照片重新画一遍——而是决定这张照片最终应该留下什么。
+> **The source photo records reality; the new image translates memory.**
 
 ---
 
-## 这是什么
+## 中文
 
-这是一个符合 [Agent Skills](https://cursor.com/docs/skills) / [agentskills.io](https://agentskills.io) 标准的 Cursor Skill 包。
+### 这是什么
 
-Agent 会：理解原图 → 提炼视觉记忆 → 选择原图呈现方式与版式 → 抽象转译 → 建立留白 → 加入短句与微量批注 → 输出可执行的生图 / 修图指令。
+Visual Memory Translator 是一个符合 [Agent Skills](https://cursor.com/docs/skills) / [agentskills.io](https://agentskills.io) 标准的图像创作 Skill。它把用户照片转译成具有**当代编辑设计、艺术出版、视觉手札**气质的二次创作图像。
 
-**适合**：旅行记录、人像日常、城市建筑、风景、想做成「记忆页」而非滤镜图的照片。  
-**不适合**：电商主图、宣传海报模板、儿童绘本风（除非你明确要求）。
+它不是滤镜、普通风格迁移或完整重画。Agent 会理解原图、提炼视觉记忆、选择原图与转译的关系、重构版式、建立留白，并输出可执行的图像生成或编辑指令。
 
----
+**适合**：旅行记录、人像日常、城市建筑、风景、食物、艺术出版页与记忆档案。
+**不适合**：电商主图、模板化宣传海报、元素堆叠的手账拼贴。
 
-## 安装
+### 安装
 
-### 方式 A：从 GitHub 导入（推荐）
+#### 方式 A：从 GitHub 导入（推荐）
 
-1. Cursor → **Customize** → **Rules** → **Add Rule**  
-2. 选择 **Remote Rule (Github)**  
-3. 填入本仓库 URL  
+1. Cursor → **Customize** → **Rules** → **Add Rule**
+2. 选择 **Remote Rule (Github)**
+3. 填入本仓库 URL
 
-### 方式 B：手动放入项目
+#### 方式 B：手动安装
 
-将 `visual-memory-translator/` 目录复制到：
+将 `visual-memory-translator/` 复制到项目目录：
 
 ```text
 .cursor/skills/visual-memory-translator/
 ```
 
-或用户全局：
+或用户全局目录：
 
 ```text
 ~/.cursor/skills/visual-memory-translator/
 ```
 
-安装后在 Agent 中输入 `/visual-memory-translator`，或说「启用影像转译编辑器」。
+也可放入兼容的 `.agents/skills/`、Claude 或 Codex skills 路径。
 
----
+### 快速使用
 
-## 快速使用
-
-1. 上传一张照片  
-2. 调用 Skill，例如：
+上传一张照片，然后输入：
 
 ```text
 启用影像转译编辑器，默认模式。
 ```
 
 ```text
-不要展示原图，极致抽象。
+不要展示原图，使用极致抽象。
 ```
 
 ```text
-用展览票模式，把这次旅行看成一次展览。
+把人物、中景和远景拆成白边贴纸重新排版。
 ```
 
-未指定参数时，Skill 会按图像类型智能默认（风景偏极简水彩、自拍偏胶带小图 + 线稿水彩等）。详细示例见 [`visual-memory-translator/examples.md`](visual-memory-translator/examples.md)。
+```text
+使用圆润粗单线插画，搭配三个以内的单色色块。
+```
 
----
+未指定参数时，Skill 会根据主体、空间层次、构图、情绪与色彩自动选择模板。详细调用见 [`visual-memory-translator/examples.md`](visual-memory-translator/examples.md)。
 
-## 仓库结构
+### 模板与风格
+
+内置方向包括：极简水彩、线稿水彩、自由涂鸦、矢量、色块记忆、结构解构、邮票记忆、展览票、长虹玻璃、档案卡、标本页、地图札记，以及新增的：
+
+- **分层贴纸记忆 / Layered Sticker Memory**：将主体、中景、远景分层剥离，加入统一白边并差异化放大重组；最多三层，维持大面积留白与克制层级。
+- **圆润粗线记忆 / Rounded Monoline Memory**：用圆角、等粗、极少线条概括主体，再加入 1–3 个单色色块；色彩硬上限为 4，保持友好但不儿童化。
+
+默认审美：高抽象（约保留 15%–30% 信息）、极高留白、非对称优先、暖米白纸面、短文案与极少视觉批注。
+
+### 仓库结构
 
 ```text
 .
 ├── README.md
 ├── LICENSE
-└── visual-memory-translator/          # Skill 包（文件夹名 = skill name）
-    ├── SKILL.md                       # 主指令（YAML frontmatter + 核心流程）
-    ├── examples.md                    # 调用示例
-    └── references/                    # 按需加载的详细规范
-        ├── display-and-layout.md      # 原图展示 / 版式
-        ├── styles.md                  # 风格库
-        ├── defaults-and-presets.md    # 默认决策与智能预设
-        ├── systems.md                 # 抽象度 / 人物 / 色彩 / 文字 / 材质
-        ├── parameters.md              # 完整参数 schema
-        └── quality.md                 # 质量清单与失败修正
+└── visual-memory-translator/
+    ├── SKILL.md
+    ├── examples.md
+    └── references/
+        ├── display-and-layout.md
+        ├── styles.md
+        ├── defaults-and-presets.md
+        ├── systems.md
+        ├── parameters.md
+        └── quality.md
 ```
 
-按需拆分是为了控制上下文：Agent 先读 `SKILL.md`，再按任务打开对应 reference。
-
----
-
-## 设计原则（摘要）
+### 设计原则
 
 | 原则 | 含义 |
-|------|------|
+|---|---|
 | Reality as evidence | 原图是现实证据 |
-| Translation as memory | 转译是记忆与残影 |
-| Less, but precise | 少而准 |
-| Whitespace is content | 留白即内容 |
+| Translation as memory | 转译承担记忆与残影 |
+| Less, but precise | 元素少，但每个都有理由 |
+| Whitespace is content | 留白是作品本身 |
 | Editorial before decorative | 版式先于装饰 |
-| Interpret, do not trace | 转译而非描摹 |
-
-默认：**高抽象（约保留 15%–30% 信息）**、**极高留白**、**转译主体约占九宫格一格**、短句中文文案、暖米白纸面。
-
-可选风格包括：极简水彩、线稿水彩、涂鸦、矢量、色块记忆、结构解构、邮票记忆、展览票、长虹玻璃、档案卡、标本页等。
+| Interpret, do not trace | 转译而非机械描摹 |
 
 ---
 
-## 兼容性
+## English
 
-- Cursor Agent（`.cursor/skills/`）  
-- 兼容目录：`.agents/skills/`、Claude / Codex skills 路径（见 Cursor 文档）  
-- 面向多模态图像生成 / 编辑工作流；默认沟通语言为中文  
+### What it is
 
-本 Skill 设置了 `disable-model-invocation: true`：需通过 `/visual-memory-translator` 或明确口令启用，避免上传普通照片时被误触发。
+Visual Memory Translator is an [Agent Skills](https://cursor.com/docs/skills) / [agentskills.io](https://agentskills.io)-compatible image-making skill. It reinterprets user photos as contemporary editorial, artist-book, and visual-journal compositions.
+
+It is not a filter, ordinary style transfer, or a complete redraw. The agent reads the source image, decides what deserves to survive as memory, chooses how reality and translation coexist, rebuilds the layout, protects negative space, and produces executable image-generation or editing instructions.
+
+**Best for:** travel photographs, portraits, everyday moments, architecture, landscapes, food, artist-book pages, and visual archives.
+**Not intended for:** e-commerce hero images, template-driven promotional posters, or decoration-heavy scrapbook collages.
+
+### Installation
+
+#### Option A: Import from GitHub (recommended)
+
+1. Open Cursor → **Customize** → **Rules** → **Add Rule**
+2. Choose **Remote Rule (Github)**
+3. Enter this repository URL
+
+#### Option B: Install manually
+
+Copy `visual-memory-translator/` into a project:
+
+```text
+.cursor/skills/visual-memory-translator/
+```
+
+Or install it for the current user:
+
+```text
+~/.cursor/skills/visual-memory-translator/
+```
+
+Compatible `.agents/skills/`, Claude, and Codex skill locations may also be used.
+
+### Quick start
+
+Upload a photo, then ask:
+
+```text
+Use Visual Memory Translator with its default settings.
+```
+
+```text
+Hide the source photo and use extreme abstraction.
+```
+
+```text
+Separate the subject, midground, and background into white-bordered stickers and recompose them.
+```
+
+```text
+Use a rounded bold monoline illustration with no more than three flat color blocks.
+```
+
+When parameters are omitted, the skill selects a template from the image's subject, depth, composition, emotion, and color. See [`visual-memory-translator/examples.md`](visual-memory-translator/examples.md) for detailed invocations.
+
+### Templates and styles
+
+Built-in directions include minimal watercolor, line watercolor, freehand doodle, vector abstraction, memory color blocks, structural deconstruction, stamp memory, exhibition ticket, fluted glass, archive card, specimen sheet, map note, plus two new templates:
+
+- **Layered Sticker Memory**: isolates the subject, midground, and far background, gives them a consistent white sticker border, and recomposes them at different scales. It uses no more than three layers and preserves extensive negative space.
+- **Rounded Monoline Memory**: reduces the subject to a rounded, uniform bold line and combines it with one to three flat monochrome color blocks. The hard color limit is four; the tone may be friendly, but never childish.
+
+The default aesthetic uses high abstraction (roughly 15%–30% retained information), very high whitespace, asymmetric hierarchy, warm off-white paper, short copy, and minimal annotations.
+
+### Repository structure
+
+```text
+.
+├── README.md
+├── LICENSE
+└── visual-memory-translator/
+    ├── SKILL.md
+    ├── examples.md
+    └── references/
+        ├── display-and-layout.md
+        ├── styles.md
+        ├── defaults-and-presets.md
+        ├── systems.md
+        ├── parameters.md
+        └── quality.md
+```
+
+### Design principles
+
+| Principle | Meaning |
+|---|---|
+| Reality as evidence | Treat the source photo as factual evidence |
+| Translation as memory | Let the reinterpretation carry memory and afterimage |
+| Less, but precise | Keep few elements, each with a reason |
+| Whitespace is content | Treat negative space as part of the work |
+| Editorial before decorative | Establish hierarchy before decoration |
+| Interpret, do not trace | Recompose instead of mechanically tracing |
+
+### Compatibility
+
+- Cursor Agent (`.cursor/skills/`)
+- Compatible `.agents/skills/`, Claude, and Codex skill paths
+- Multimodal image-generation and image-editing workflows
+- Chinese and English user prompts
+
+The skill uses `disable-model-invocation: true`, so invoke `/visual-memory-translator` or name the skill explicitly to avoid triggering it for ordinary photo uploads.
 
 ---
 
-## 许可
+## License / 许可
 
-MIT License — 见 [LICENSE](LICENSE)。
+MIT License — see [LICENSE](LICENSE). / 详见 [LICENSE](LICENSE)。

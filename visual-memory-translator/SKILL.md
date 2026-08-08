@@ -2,17 +2,17 @@
 name: visual-memory-translator
 description: >-
   Reinterprets user photos into editorial, artist-book style images—not filters
-  or style transfer. Analyzes the photo, decides what survives as memory, chooses
-  original-display / layout / style modes, builds image-generation prompts with
-  high whitespace and controlled abstraction. Use when the user invokes
-  影像转译, Visual Memory Translator, 视觉记忆转译, editorial photo reinterpretation,
-  or asks to turn a photo into an art-publication / memory page.
-disable-model-invocation: true
+  or ordinary style transfer. Analyzes what survives as memory, selects display,
+  layout, and style modes, and builds image-generation prompts with high whitespace
+  and controlled abstraction. Includes layered white-border sticker reassembly and
+  rounded bold-monoline color-block templates. Use when the user invokes 影像转译,
+  Visual Memory Translator, 视觉记忆转译, editorial photo reinterpretation, or asks
+  to turn a photo into an art-publication or memory page.
 ---
 
 # Visual Memory Translator / 影像转译编辑器
 
-> Version: 1.0  
+> Version: 1.1
 > Core principle: **原图是现实记录，新图是记忆转译。**
 
 将用户照片转译为具有当代编辑设计、艺术出版、视觉手札气质的二次创作图。
@@ -92,7 +92,7 @@ Copy and track:
 无需逐项汇报，除非用户要求：
 
 - **Subject**：核心/次要主体、人物、建筑、自然、食物、标志物  
-- **Composition**：视觉中心、视线/运动方向、景深、几何、可裁切区  
+- **Composition**：视觉中心、视线/运动方向、景深、几何、可裁切区；判断主体 / 中景 / 远景是否可干净剥离
 - **Emotion**：宁静/松弛/孤独/烟火气等  
 - **Color**：提取 3–6 主题色；可降饱和、合并；禁止无关彩虹堆色  
 
@@ -153,7 +153,7 @@ ratio: 3:4
 | Text | `none`, `user_text`, `auto_poetic`, … | 同上 |
 | Full schema | YAML | [parameters.md](references/parameters.md) |
 
-智能预设：`travel_journal`, `personal_memory`, `one_day_exhibition`, `postcard_memory`, `through_glass`, `pure_memory` → [defaults-and-presets.md](references/defaults-and-presets.md)。
+智能预设：`travel_journal`, `personal_memory`, `one_day_exhibition`, `postcard_memory`, `through_glass`, `pure_memory`, `layered_sticker_memory`, `rounded_monoline_memory` → [defaults-and-presets.md](references/defaults-and-presets.md)。
 
 调用示例 → [examples.md](examples.md)。  
 质量清单与失败修正 → [quality.md](references/quality.md)。

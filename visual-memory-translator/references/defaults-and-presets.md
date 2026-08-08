@@ -33,6 +33,8 @@
 | 建筑 / 城市 | `architectural_watercolor` 倾向 → `minimal_watercolor` 或 `structural_deconstruction` |
 | 食物 / 夜市 / 烟火气 | `minimal_watercolor`，加强色块/烟雾/热气/形状概括 |
 | 极干净、几何强 | `extreme_minimal_abstraction` |
+| 主体明确、景深分层清楚 | `layered_sticker_reassembly` |
+| 轮廓鲜明、姿态或物体形状有趣 | `rounded_monoline_blocks` |
 
 ---
 
@@ -141,3 +143,34 @@ abstraction_level: extreme
 text_mode: auto_minimal
 whitespace_level: very_high
 ```
+
+### `layered_sticker_memory`
+
+```yaml
+original_display_mode: extracted_sticker_layers
+layout_mode: sticker_layer_reassembly
+style_mode: layered_sticker_reassembly
+abstraction_level: medium
+whitespace_level: very_high
+layer_count: 3
+sticker_border: clean_warm_white
+sticker_shadow: very_subtle
+text_mode: auto_minimal
+```
+
+主体与前中后景分离清晰时使用。若只能可靠识别两层，则用两层，不强行补足三层。主体通常最大，中景次之，远景最小或最淡。
+
+### `rounded_monoline_memory`
+
+```yaml
+original_display_mode: translation_only
+layout_mode: large_whitespace_small_art
+style_mode: rounded_monoline_blocks
+abstraction_level: high
+whitespace_level: very_high
+line_weight: bold_uniform_rounded
+color_block_count: 3
+text_mode: auto_minimal
+```
+
+人物姿态、动物、器物轮廓鲜明时使用。颜色默认不多于三种，只有识别必需时才允许第四种；不得超过四种。

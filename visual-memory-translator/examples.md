@@ -96,6 +96,54 @@ ratio: 3:4
 
 ---
 
+## Example H — 分层贴纸记忆 / Layered Sticker Memory
+
+```text
+把人物、中景和远景分别剥离出来，做成统一白边贴纸；主体放大，保持大面积留白。
+```
+
+```text
+Separate the subject, midground, and far background into white-bordered stickers. Enlarge the subject and preserve extensive whitespace.
+```
+
+```yaml
+preset: layered_sticker_memory
+original_display_mode: extracted_sticker_layers
+layout_mode: sticker_layer_reassembly
+style_mode: layered_sticker_reassembly
+layer_count: 3
+sticker_border_width: standard_3_to_5_percent
+sticker_shadow: very_subtle
+whitespace_level: very_high
+```
+
+若无法可靠拆出三层，自动降为两层，不补造遮挡内容。
+
+---
+
+## Example I — 圆润粗线色块 / Rounded Monoline Blocks
+
+```text
+把人物画成圆润的粗单线插画，只用三个以内的单色色块，不展示原图。
+```
+
+```text
+Turn the subject into a rounded bold-monoline illustration with no more than three flat color blocks. Hide the source photo.
+```
+
+```yaml
+preset: rounded_monoline_memory
+original_display_mode: translation_only
+layout_mode: large_whitespace_small_art
+style_mode: rounded_monoline_blocks
+line_weight: bold_uniform_rounded
+color_block_count: 3
+abstraction_level: high
+whitespace_level: very_high
+```
+
+---
+
 ## Clarification example
 
 信息不足且方向分歧大时：
