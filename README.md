@@ -20,10 +20,10 @@ The same skill can choose very different visual languages from the structure of 
 | ![Layered Sticker Memory test](outputs/paddleboard-layered-sticker-memory.png) | ![Rounded Monoline Memory test](outputs/paddleboard-rounded-monoline-memory.png) |
 | `layered_sticker_memory`<br>将人物、桨板与天空拆成三层白边贴纸，在大留白中重新建立景深。<br>Separates the subject, board, and sky into three white-bordered layers and rebuilds depth inside generous whitespace. | `rounded_monoline_memory`<br>以统一圆润粗线概括人物和器材，仅保留三个主色。<br>Reduces the person and equipment to one rounded bold line language with only three principal colors. |
 
-| Map Note / 地图札记 | Stamp Memory / 邮票记忆 |
+| Watercolor Memory / 水彩记忆 | Coffee Specimen / 咖啡标本页 |
 |:---:|:---:|
-| ![Map Note test](outputs/mountain-path-map-note-memory.png) | ![Stamp Memory test](outputs/mountain-portrait-large-stamp-memory.png) |
-| `map_note`<br>上部保留现实证据，下部把小路、溪流与山体转成概念地图。<br>Keeps the photographic evidence above and translates the path, stream, and mountain into a conceptual map below. | `stamp_memory`<br>将人像、村落、河流与山形融合成一枚大画幅旅行邮票。<br>Fuses a portrait, village, river, and mountain silhouette into a large-format travel stamp. |
+| ![Watercolor Memory test](outputs/mountain-village-memory-translation.png) | ![Coffee Specimen test](outputs/coffee-material-specimen-memory.png) |
+| `minimal_line_watercolor`<br>保留一张克制的小幅照片，再用线稿、水彩山形与河流残影重组旅行记忆。<br>Keeps one restrained photo fragment, then rebuilds the travel memory through linework, watercolor mountains, and a river afterimage. | `specimen_sheet`<br>把咖啡的泡沫、油脂、烘烤色与金属质感拆成一页材料标本。<br>Separates foam, crema, toast, and chrome into a quiet material specimen page. |
 
 ---
 
