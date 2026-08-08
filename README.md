@@ -1,9 +1,29 @@
 # Visual Memory Translator / 影像转译编辑器
 
-[中文](#中文) · [English](#english)
+[中文](#中文) · [English](#english) · [测试案例 / Tests](#selected-tests)
 
 > **原图是现实记录，新图是记忆转译。**  
 > **The source photo records reality; the new image translates memory.**
+
+---
+
+<a id="selected-tests"></a>
+
+## Selected tests / 测试案例
+
+同一套 Skill 可以根据照片结构选择完全不同的记忆语言。以下案例均由真实照片出发生成，只展示转译结果，不公开原始照片。
+
+The same skill can choose very different visual languages from the structure of a photograph. Each example below was generated from a real source photo; only the reinterpretation is shown.
+
+| Layered Sticker Memory / 分层贴纸记忆 | Rounded Monoline Memory / 圆润粗线记忆 |
+|:---:|:---:|
+| ![Layered Sticker Memory test](outputs/paddleboard-layered-sticker-memory.png) | ![Rounded Monoline Memory test](outputs/paddleboard-rounded-monoline-memory.png) |
+| `layered_sticker_memory`<br>将人物、桨板与天空拆成三层白边贴纸，在大留白中重新建立景深。<br>Separates the subject, board, and sky into three white-bordered layers and rebuilds depth inside generous whitespace. | `rounded_monoline_memory`<br>以统一圆润粗线概括人物和器材，仅保留三个主色。<br>Reduces the person and equipment to one rounded bold line language with only three principal colors. |
+
+| Map Note / 地图札记 | Stamp Memory / 邮票记忆 |
+|:---:|:---:|
+| ![Map Note test](outputs/mountain-path-map-note-memory.png) | ![Stamp Memory test](outputs/mountain-portrait-large-stamp-memory.png) |
+| `map_note`<br>上部保留现实证据，下部把小路、溪流与山体转成概念地图。<br>Keeps the photographic evidence above and translates the path, stream, and mountain into a conceptual map below. | `stamp_memory`<br>将人像、村落、河流与山形融合成一枚大画幅旅行邮票。<br>Fuses a portrait, village, river, and mountain silhouette into a large-format travel stamp. |
 
 ---
 
@@ -206,7 +226,7 @@ The default aesthetic uses high abstraction (roughly 15%–30% retained informat
 - Multimodal image-generation and image-editing workflows
 - Chinese and English user prompts
 
-The skill uses `disable-model-invocation: true`, so invoke `/visual-memory-translator` or name the skill explicitly to avoid triggering it for ordinary photo uploads.
+Invoke `/visual-memory-translator`, name the skill explicitly, or use a clear trigger such as “turn this photo into an editorial memory page.”
 
 ---
 
