@@ -1,6 +1,6 @@
 # Defaults & Smart Presets
 
-未指定参数时按本节执行。修改默认必须基于图像的合理判断。
+未指定风格时，先按 [style-preview.md](style-preview.md) 生成默认 6 格风格预览。本节的智能默认用于筛选候选风格，以及用户选号或跳过预览后的成品生成。
 
 ---
 
@@ -58,6 +58,8 @@
 
 ```yaml
 preset: default_editorial_memory
+preview_mode: auto
+preview_count: 6
 original_display_mode: split_top_bottom
 layout_mode: split_editorial
 style_mode: minimal_watercolor
