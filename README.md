@@ -1,9 +1,34 @@
 # Visual Memory Translator / 影像转译编辑器
 
-[中文](#中文) · [English](#english) · [测试案例 / Tests](#selected-tests)
+[中文](#中文) · [English](#english) · [风格预览 / Style Preview](#style-preview) · [测试案例 / Tests](#selected-tests)
 
 > **原图是现实记录，新图是记忆转译。**  
 > **The source photo records reality; the new image translates memory.**
+
+---
+
+<a id="style-preview"></a>
+
+## v1.2 · 风格试衣间 / Style Preview Contact Sheet
+
+用户上传照片但**未指定风格**时，Skill 会先生成一张可选的宫格预览图：
+
+- 默认 6 格（2×3），也可按需生成 4 格（2×2）或 9 格（3×3）。
+- 每格是明显不同的媒介、版式与转译逻辑，不是简单换滤镜。
+- 图内只标 `01`–`09`；风格名与适配理由放在回复中。
+- 用户回复编号后，从**原始照片**重新生成高清成品，不放大宫格单格。
+- 支持「再换一组」、「融合 02 和 05」，也支持「跳过预览，直接出最终图」。
+
+![Visual Memory Translator 6-panel style preview](outputs/paddleboard-style-preview-6-grid-v1.2.png)
+
+When a user uploads a photo **without naming a style**, the skill creates one selectable contact sheet first. The default is six panels (2×3), with optional four-panel (2×2) and nine-panel (3×3) layouts. After the user chooses a number, the final high-resolution artwork is regenerated from the original photo—never enlarged from the preview tile.
+
+```text
+用户：启用影像转译编辑器。
+Skill：生成 6 格风格预览，并列出 01–06 的风格说明。
+用户：05
+Skill：基于原始照片，按 05 方向重新生成高清成品。
+```
 
 ---
 
@@ -82,7 +107,7 @@ Visual Memory Translator 是一个符合 [Agent Skills](https://cursor.com/docs/
 使用圆润粗单线插画，搭配三个以内的单色色块。
 ```
 
-未指定参数时，Skill 会根据主体、空间层次、构图、情绪与色彩自动选择模板。详细调用见 [`visual-memory-translator/examples.md`](visual-memory-translator/examples.md)。
+未指定风格时，Skill 会先生成默认 6 格风格预览；已指定风格或明确说「跳过预览」时则直达成品。详细调用见 [`visual-memory-translator/examples.md`](visual-memory-translator/examples.md)。
 
 ### 模板与风格
 
@@ -108,6 +133,7 @@ Visual Memory Translator 是一个符合 [Agent Skills](https://cursor.com/docs/
         ├── defaults-and-presets.md
         ├── systems.md
         ├── parameters.md
+        ├── style-preview.md
         └── quality.md
 ```
 
@@ -179,7 +205,7 @@ Separate the subject, midground, and background into white-bordered stickers and
 Use a rounded bold monoline illustration with no more than three flat color blocks.
 ```
 
-When parameters are omitted, the skill selects a template from the image's subject, depth, composition, emotion, and color. See [`visual-memory-translator/examples.md`](visual-memory-translator/examples.md) for detailed invocations.
+When no style is specified, the skill first produces a six-panel style preview. If a style is already named—or the user explicitly asks to skip preview—it proceeds directly to the final artwork. See [`visual-memory-translator/examples.md`](visual-memory-translator/examples.md) for detailed invocations.
 
 ### Templates and styles
 
@@ -205,6 +231,7 @@ The default aesthetic uses high abstraction (roughly 15%–30% retained informat
         ├── defaults-and-presets.md
         ├── systems.md
         ├── parameters.md
+        ├── style-preview.md
         └── quality.md
 ```
 

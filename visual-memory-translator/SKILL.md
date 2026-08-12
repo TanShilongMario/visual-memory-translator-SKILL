@@ -4,15 +4,17 @@ description: >-
   Reinterprets user photos into editorial, artist-book style images—not filters
   or ordinary style transfer. Analyzes what survives as memory, selects display,
   layout, and style modes, and builds image-generation prompts with high whitespace
-  and controlled abstraction. Includes layered white-border sticker reassembly and
-  rounded bold-monoline color-block templates. Use when the user invokes 影像转译,
+  and controlled abstraction. When no style is specified, first creates a selectable
+  4-, 6-, or 9-panel style-preview contact sheet, then regenerates the chosen direction
+  from the original photo at final quality. Includes layered white-border sticker
+  reassembly and rounded bold-monoline color-block templates. Use when the user invokes 影像转译,
   Visual Memory Translator, 视觉记忆转译, editorial photo reinterpretation, or asks
   to turn a photo into an art-publication or memory page.
 ---
 
 # Visual Memory Translator / 影像转译编辑器
 
-> Version: 1.1
+> Version: 1.2
 > Core principle: **原图是现实记录，新图是记忆转译。**
 
 将用户照片转译为具有当代编辑设计、艺术出版、视觉手札气质的二次创作图。
@@ -63,21 +65,27 @@ description: >-
 Copy and track:
 
 ```
-- [ ] 1. 读取用户参数（缺省则智能默认）
+- [ ] 1. 读取用户参数，判断是否需要风格预览
 - [ ] 2. 内部分析图像（主体/构图/情绪/色彩）
-- [ ] 3. 决定 ORIGINAL_DISPLAY_MODE / LAYOUT / STYLE / 抽象度等
-- [ ] 4. 构造生图 prompt（见下方顺序）
-- [ ] 5. 生成或给出可执行的图像编辑指令
-- [ ] 6. 用质量清单自检；失败则按 recovery 修正重试
+- [ ] 3. 未指定风格时，先生成一张 4/6/9 格预览图并等待选择
+- [ ] 4. 获得风格后，决定 ORIGINAL_DISPLAY_MODE / LAYOUT / 抽象度等
+- [ ] 5. 从原始照片构造成品 prompt（见下方顺序）
+- [ ] 6. 生成或给出可执行的图像编辑指令
+- [ ] 7. 用质量清单自检；失败则按 recovery 修正重试
 ```
 
 ### Interaction
 
-1. 读取明确参数 → 分析图像 → 能合理默认则直接做，不追问。  
-2. **优先减少交互**；重大创作方向无法判断时再问。  
-3. 用户说「让我选 / 先别生成 / 推荐方案」→ **不得自动生成**，最多给 3 个差异明显方向。  
-4. 用户说「默认 / 你来判断 / 只上传图」→ 直接执行。  
-5. 缺一大决策时：最多问 1 个问题，给 2–4 选项，并声明不选则用默认。
+1. 读取明确参数 → 分析图像；能合理默认则不追问。
+2. **未指定 `style_mode` 或可识别的风格方向时**：默认生成一张 6 格（2×3）预览图，而不是直接出成品。
+3. 用户可要求 4 格（2×2）或 9 格（3×3）；未说数量时用 6 格。
+4. 预览图内只标 `01`–`09`，不把风格名与长说明塞进图里；在回复中逐号列出风格名和一句适配理由。
+5. 用户回复编号后，**必须基于原始照片重新生成高清成品**；不得裁切、放大或二次编辑宫格中的低清单格。
+6. 支持「再换一组」和「融合 02 和 05」；融合时先说明主风格与被吸收的特征，然后从原图生成。
+7. 用户明确说「跳过预览 / 直接出最终图」或已指定风格时，直达成品。
+8. 用户说「先别生成」时，不生成图；最多用文字给 3 个方向。
+
+宫格的风格选择、构图及 prompt 规则见 [references/style-preview.md](references/style-preview.md)。
 
 ### Decision priority
 
@@ -119,9 +127,11 @@ Copy and track:
 
 ```yaml
 preset: default_editorial_memory
+preview_mode: auto                    # 未指定风格时先预览
+preview_count: 6                      # 4 | 6 | 9
 original_display_mode: split_top_bottom   # 或按图类型改，见 references
 layout_mode: split_editorial
-style_mode: minimal_watercolor            # 风景默认；人像/建筑等见 defaults
+style_mode: auto                          # 先预览；选号/跳过后按 defaults 决定
 abstraction_level: high                   # 保留约 15–30% 信息
 whitespace_level: very_high
 translation_scale: one_ninth_grid         # 大留白时转译约占一格 / 15–30% 面积
@@ -149,6 +159,7 @@ ratio: 3:4
 | Display | `split_top_bottom`, `taped_corner_photo`, `translation_only`, … | [display-and-layout.md](references/display-and-layout.md) |
 | Layout | `split_editorial`, `large_whitespace_small_art`, … | 同上 |
 | Style | `minimal_watercolor`, `exhibition_ticket`, `fluted_glass`, … | [styles.md](references/styles.md) |
+| Preview | `auto` / `skip`; 4 / **6** / 9 格 | [style-preview.md](references/style-preview.md) |
 | Abstraction | `low` / `medium` / **`high`** / `extreme` | [systems.md](references/systems.md) |
 | Text | `none`, `user_text`, `auto_poetic`, … | 同上 |
 | Full schema | YAML | [parameters.md](references/parameters.md) |
@@ -168,7 +179,7 @@ ratio: 3:4
 @VisualMemoryTranslator
 ```
 
-无其他参数时走智能默认。YAML 调用示例：
+无其他参数且未指定风格时，先走 6 格风格预览。YAML 调用示例：
 
 ```yaml
 skill: visual_memory_translator

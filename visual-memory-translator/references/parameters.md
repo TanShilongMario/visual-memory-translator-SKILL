@@ -3,6 +3,12 @@
 ```yaml
 skill: visual_memory_translator
 
+preview_mode:
+  # auto | force | skip
+
+preview_count:
+  # 4 | 6 | 9
+
 original_display_mode:
   # split_top_bottom
   # split_left_right
@@ -101,6 +107,9 @@ ratio:
 ```yaml
 skill: visual_memory_translator
 preset: default_editorial_memory
+
+preview_mode: auto
+preview_count: 6
 
 original_display_mode: auto
 layout_mode: auto
