@@ -87,6 +87,12 @@ Visual Memory Translator 是一个符合 [Agent Skills](https://cursor.com/docs/
 
 也可放入兼容的 `.agents/skills/`、Claude 或 Codex skills 路径。
 
+#### 方式 C：使用 Skills CLI 安装
+
+```bash
+npx skills add stonega/visual-memory-translator-SKILL
+```
+
 ### 快速使用
 
 上传一张照片，然后输入：
@@ -184,6 +190,12 @@ Or install it for the current user:
 ```
 
 Compatible `.agents/skills/`, Claude, and Codex skill locations may also be used.
+
+#### Option C: Install with the Skills CLI
+
+```bash
+npx skills add stonega/visual-memory-translator-SKILL
+```
 
 ### Quick start
 
