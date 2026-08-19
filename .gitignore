@@ -5,3 +5,5 @@ Thumbs.db
 .idea/
 .vscode/
 *.log
+tmp/
+local-tests/

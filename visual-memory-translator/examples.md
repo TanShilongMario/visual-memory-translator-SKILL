@@ -181,6 +181,50 @@ whitespace_level: very_high
 
 ---
 
+## Example J — 文本隐喻卡
+
+```text
+把这句话做成影像转译：所谓工作与生活的平衡，就是工作不断加码，生活负责配重。
+```
+
+```yaml
+input_mode: text
+preview_mode: skip
+style_mode: editorial_metaphor_card
+text_mode: user_text
+ratio: 3:4
+```
+
+保留原句，只画一个隐喻（例如天平），不要画完整故事，不要金句叠照片。
+
+---
+
+## Example K — 节日限定
+
+```text
+启用影像转译。今天若是节日就带一点节日痕迹。
+```
+
+```yaml
+holiday_mode: auto
+```
+
+窗口为节日 ±1 天。七夕双人照可用红线/喜鹊；单人照不加伴侣。
+
+```text
+不用节日限定。
+圣诞节限定，但不要圣诞老人。
+```
+
+```yaml
+holiday_mode: skip
+# 或
+holiday_mode: force
+holiday_id: christmas
+```
+
+---
+
 ## Clarification example
 
 信息不足且方向分歧大时：
