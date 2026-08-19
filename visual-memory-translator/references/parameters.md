@@ -3,11 +3,20 @@
 ```yaml
 skill: visual_memory_translator
 
+input_mode:
+  # auto | photo | text | mixed
+
 preview_mode:
   # auto | force | skip
 
 preview_count:
   # 4 | 6 | 9
+
+holiday_mode:
+  # auto | force | skip
+
+holiday_id:
+  # auto | qixi | tanabata | easter | thanksgiving | christmas | mid_autumn | spring_festival | ...
 
 original_display_mode:
   # split_top_bottom
@@ -52,6 +61,7 @@ style_mode:
   # commemorative_cover
   # layered_sticker_reassembly
   # rounded_monoline_blocks
+  # editorial_metaphor_card
 
 abstraction_level:
   # low | medium | high | extreme
@@ -108,8 +118,11 @@ ratio:
 skill: visual_memory_translator
 preset: default_editorial_memory
 
+input_mode: auto
 preview_mode: auto
 preview_count: 6
+holiday_mode: auto
+holiday_id: auto
 
 original_display_mode: auto
 layout_mode: auto
@@ -124,4 +137,4 @@ transition: deckled_paper_edge
 ratio: 3:4
 ```
 
-`auto` 的决策规则见 [defaults-and-presets.md](defaults-and-presets.md)。
+`auto` 的决策规则见 [defaults-and-presets.md](defaults-and-presets.md)。节日窗口见 [holidays.md](holidays.md)。

@@ -1,6 +1,6 @@
 # Defaults & Smart Presets
 
-未指定风格时，先按 [style-preview.md](style-preview.md) 生成默认 6 格风格预览。本节的智能默认用于筛选候选风格，以及用户选号或跳过预览后的成品生成。
+先判定 `input_mode`。photo 且未指定风格时，按 [style-preview.md](style-preview.md) 生成默认 6 格预览。text 路径见 [text-visual.md](text-visual.md)，默认跳过宫格。本节用于筛选候选风格，以及选号或跳过预览后的成品生成。
 
 ---
 
@@ -29,8 +29,8 @@
 | 图像类型 | 默认 |
 |----------|------|
 | 风景 / 山野 / 村落 / 水景 | `minimal_watercolor` |
-| 人物 / 自拍 / 日常 | `minimal_line_watercolor`；轻松有趣可用 `freehand_doodle` |
-| 建筑 / 城市 | `architectural_watercolor` 倾向 → `minimal_watercolor` 或 `structural_deconstruction` |
+| 人物 / 自拍 / 日常 | `minimal_line_watercolor`；轻松有趣可用 `freehand_doodle`。转译禁止完整肖像，优先小照片 + 高度概括 |
+| 建筑 / 城市 | `structural_deconstruction` 或克制的 `minimal_watercolor` |
 | 食物 / 夜市 / 烟火气 | `minimal_watercolor`，加强色块/烟雾/热气/形状概括 |
 | 极干净、几何强 | `extreme_minimal_abstraction` |
 | 主体明确、景深分层清楚 | `layered_sticker_reassembly` |
@@ -68,12 +68,13 @@ whitespace_level: very_high
 translation_scale: one_ninth_grid
 text_mode: auto_poetic
 doodle_level: very_low
+holiday_mode: auto
 background_style: warm_off_white_paper
 transition: deckled_paper_edge
 ratio: 3:4
 ```
 
-主动调整示例：自拍 → `taped_corner_photo`；建筑 → `structural_deconstruction`；极简几何 → `extreme_minimal_abstraction`；强调全新 → `translation_only`。
+主动调整示例：自拍 → `taped_corner_photo`；建筑 → `structural_deconstruction`；极简几何 → `extreme_minimal_abstraction`；强调全新 → `translation_only`。节日窗口内默认叠加薄层，见 [holidays.md](holidays.md)。
 
 ---
 
@@ -176,3 +177,18 @@ text_mode: auto_minimal
 ```
 
 人物姿态、动物、器物轮廓鲜明时使用。颜色默认不多于三种，只有识别必需时才允许第四种；不得超过四种。
+
+### `editorial_text_card`
+
+```yaml
+input_mode: text
+preview_mode: skip
+original_display_mode: translation_only
+layout_mode: large_whitespace_small_art
+style_mode: editorial_metaphor_card
+text_mode: user_text
+whitespace_level: very_high
+ratio: 3:4
+```
+
+无参考图、输入是句子或概念时使用。
