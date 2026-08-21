@@ -21,6 +21,8 @@
 
 **Do not paint a finished portrait**：人像转译默认 `high` 抽象。禁止完整五官写实、完整上色肖像、可裁出来单独当头像的水彩。原图若以小照片保留，转译部分应比照片更空、更简，而不是把照片重画一遍放大。
 
+`banknote_specimen` / `banknote_in_situ` 例外：允许凹版排线肖像（侧面或 3/4），仍禁止照片级皮肤与完整彩绘脸。详见 [banknote.md](banknote.md)。
+
 ---
 
 ## Color System

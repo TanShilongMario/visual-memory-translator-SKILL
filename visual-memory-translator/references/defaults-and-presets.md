@@ -192,3 +192,33 @@ ratio: 3:4
 ```
 
 无参考图、输入是句子或概念时使用。
+
+### `banknote_specimen`
+
+```yaml
+style_mode: banknote_specimen
+original_display_mode: split_top_bottom
+layout_mode: split_editorial
+abstraction_level: medium
+holiday_mode: skip
+transition: clean_cut
+ratio: 3:4
+```
+
+上半原图铺满；下半图录样张。用户说「纸币样张」「纪念钞样张」时用。
+
+### `banknote_in_situ`
+
+```yaml
+style_mode: banknote_in_situ
+original_display_mode: split_top_bottom
+layout_mode: split_editorial
+abstraction_level: medium
+holiday_mode: skip
+transition: clean_cut
+ratio: 3:4
+```
+
+上半原图铺满；下半手持该券、背景为同一现场。用户说「纸币实景」「手持纪念钞」「实景取样」时用。
+
+只说「纸币模式」时按当次需求选择，不按人物/风景写死。详见 [banknote.md](banknote.md)。
