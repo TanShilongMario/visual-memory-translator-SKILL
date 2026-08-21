@@ -18,7 +18,7 @@ description: >-
 
 # Visual Memory Translator / 影像转译编辑器
 
-> Version: 1.4
+> Version: 1.4.1
 > Core principle: **原图是现实记录，新图是记忆转译。无图时，句子是概念，画面是隐喻。**
 
 将用户照片转译为具有当代编辑设计、艺术出版、视觉手札气质的二次创作图。
