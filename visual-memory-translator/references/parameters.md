@@ -59,6 +59,9 @@ style_mode:
   # specimen_sheet
   # map_note
   # commemorative_cover
+  # banknote_specimen
+  # banknote_in_situ
+  # commemorative_banknote
   # layered_sticker_reassembly
   # rounded_monoline_blocks
   # editorial_metaphor_card

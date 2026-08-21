@@ -225,6 +225,31 @@ holiday_id: christmas
 
 ---
 
+## Example L — 纸币样张 / 纸币实景
+
+```text
+启用影像转译。纸币样张。
+```
+
+```yaml
+style_mode: banknote_specimen
+holiday_mode: skip
+```
+
+```text
+用纸币实景。
+手持纪念钞。
+实景取样。
+```
+
+```yaml
+style_mode: banknote_in_situ
+```
+
+只说「纸币模式」时按当次需求选择样张或实景。币名必须虚构，不复制人民币或美元。
+
+---
+
 ## Clarification example
 
 信息不足且方向分歧大时：
